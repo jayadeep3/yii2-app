@@ -17,9 +17,9 @@ jobs:
     - name: Build and Push Docker Image
       run: |
         cd yii2-app
-        docker build -t jayadeep3/yii2-app:latest .
+        docker build -t "${{ secrets.DOCKER_USERNAME }}"/yii2-app:latest .
         echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-        docker push yourdockerhubusername/yii2-app:latest
+        docker push "${{ secrets.DOCKER_USERNAME }}"/yii2-app:latest
 
     - name: SSH and Deploy
       uses: appleboy/ssh-action@v0.1.6
@@ -28,5 +28,5 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
-          docker service update --image jayadeep3/yii2-app:latest yii2_app_yii2-app
+          docker service update --image "${{ secrets.DOCKER_USERNAME }}"/yii2-app:latest yii2_app_yii2-app
 
