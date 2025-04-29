@@ -43,7 +43,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Copy Yii2 app
-COPY ./src /var/www/html
+COPY . /var/www/html
 
 # Install Yii2 dependencies
 RUN composer install --prefer-dist --no-interaction
