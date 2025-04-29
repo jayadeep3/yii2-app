@@ -1,20 +1,17 @@
 FROM php:7.4-apache
 
-# Install required system packages
+# Install required tools
 RUN apt-get update && apt-get install -y \
-    git unzip zip curl libzip-dev \
-    && docker-php-ext-install zip pdo pdo_mysql
+    unzip git curl zip libzip-dev \
+    && docker-php-ext-install zip
 
 # Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy project files
-WORKDIR /var/www/html
-COPY . .
+# Copy app code
+COPY . /var/www/html
 
-# Install dependencies using Composer
-RUN composer clear-cache && \
-    composer install --prefer-dist --no-interaction --optimize-autoloader
+# Install PHP dependencies
+RUN composer install --prefer-dist --no-interaction --optimize-autoloader
 
-# Expose port 80
 EXPOSE 80
