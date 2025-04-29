@@ -1,0 +1,8 @@
+---
+- name: Deploy the application
+  hosts: all
+  become: true
+  tasks:
+    - name: Deploy Yii2 app stack
+      shell: docker stack deploy -c docker/docker-compose.yml yii2_app
+
