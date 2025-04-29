@@ -1,10 +1,9 @@
 name: Deploy Yii2 App
 
 on:
-  workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -27,6 +26,7 @@ jobs:
         host: ${{ secrets.SERVER_IP }}
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
+        port: 22
         script: |
           cd docker
           docker-compose pull
