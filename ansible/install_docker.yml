@@ -16,7 +16,7 @@
     - name: Build Docker image from Dockerfile
       docker_image:
         build:
-          path: /docker/Dockerfile
-        name: your-dockerhub-username/yii2-app
+          path: /yii2-app/Dockerfile
+        name: jayadeep3/yii2-app
         tag: latest
         state: present
