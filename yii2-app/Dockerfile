@@ -45,6 +45,9 @@ WORKDIR /var/www/html
 # Copy Yii2 app
 COPY . /var/www/html
 
+# Allow Yii2 plugin
+RUN composer config --no-plugins allow-plugins.yiisoft/yii2-composer true
+
 # Install Yii2 dependencies
 RUN composer install --prefer-dist --no-interaction
 
