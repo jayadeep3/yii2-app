@@ -1,14 +1,34 @@
 # yii2-app
-How to run Ansible playbooks:
 
-  ansible-playbook -i ansible/hosts.ini ansible/install_docker.yml
+The repository yii2-app appears to be a project for deploying an application using Ansible playbooks and includes a CI/CD pipeline. Here's a step-by-step summary of the repository based on its README:
+1. Running Ansible Playbooks
 
-  ansible-playbook -i ansible/hosts.ini ansible/install_nginx.yml
+The repository includes several Ansible playbooks to set up and deploy the application. These are executed as follows:
 
-  ansible-playbook -i ansible/hosts.ini ansible/setup_swarm.yml
+    Install Docker:
+    bash
 
-  ansible-playbook -i ansible/hosts.ini ansible/deploy_app.yml
+ansible-playbook -i ansible/hosts.ini ansible/install_docker.yml
 
-How CI/CD works (push to main triggers build and deploy).
+Install NGINX:
+bash
 
-How to test deployment (access public IP or domain in browser).
+ansible-playbook -i ansible/hosts.ini ansible/install_nginx.yml
+
+Set up Docker Swarm:
+bash
+
+ansible-playbook -i ansible/hosts.ini ansible/setup_swarm.yml
+
+Deploy the application:
+bash
+
+    ansible-playbook -i ansible/hosts.ini ansible/deploy_app.yml
+
+2. Continuous Integration/Continuous Deployment (CI/CD)
+
+    The repository is configured such that pushing to the main branch will automatically trigger a build and deployment process.
+
+3. Testing the Deployment
+
+    After deployment, you can verify the application by accessing it through the public IP or domain in a browser.
