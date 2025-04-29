@@ -1,7 +1,4 @@
 {
-  "name": "yii2-app",
-  "description": "A Yii2 PHP application",
-  "type": "project",
   "repositories": [
     {
       "type": "composer",
@@ -11,9 +8,8 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require": {
-    "php": ">=7.4.0",
     "yiisoft/yii2": "~2.0.14",
-    "yiisoft/yii2-bootstrap": "~2.0.0",
-    "yiisoft/yii2-swiftmailer": "~2.0.0"
+    "bower-asset/jquery": "~3.6.0",
+    "bower-asset/bootstrap": "~4.0.0"
   }
 }
