@@ -1,18 +1,20 @@
 FROM php:7.4-apache
 
+# Install required system packages
 RUN apt-get update && apt-get install -y \
-    zip unzip git libzip-dev libicu-dev \
-    && docker-php-ext-install zip intl pdo pdo_mysql mbstring
+    git unzip zip curl libzip-dev \
+    && docker-php-ext-install zip pdo pdo_mysql
 
-# Use Composer directly from composer image
+# Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy Yii2 project
+# Copy project files
 WORKDIR /var/www/html
 COPY . .
 
-# Set up asset-packagist and install dependencies
+# Install dependencies using Composer
 RUN composer clear-cache && \
     composer install --prefer-dist --no-interaction --optimize-autoloader
 
+# Expose port 80
 EXPOSE 80
