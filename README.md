@@ -5,25 +5,21 @@ The repository yii2-app appears to be a project for deploying an application usi
 
 The repository includes several Ansible playbooks to set up and deploy the application. These are executed as follows:
 
-    Install Docker:
-    bash
+Install Docker:
 
-ansible-playbook -i ansible/hosts.ini ansible/install_docker.yml
+    ansible-playbook ansible/install_docker.yml
 
 Install NGINX:
-bash
 
-ansible-playbook -i ansible/hosts.ini ansible/install_nginx.yml
+    ansible-playbook ansible/install_nginx.yml
 
 Set up Docker Swarm:
-bash
 
-ansible-playbook -i ansible/hosts.ini ansible/setup_swarm.yml
+    ansible-playbook ansible/setup_swarm.yml
 
 Deploy the application:
-bash
 
-    ansible-playbook -i ansible/hosts.ini ansible/deploy_app.yml
+    ansible-playbook ansible/deploy_app.yml
 
 2. Continuous Integration/Continuous Deployment (CI/CD)
 
