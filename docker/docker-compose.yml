@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: yourdockerhub/yii2-app:latest
+    image: jayadeep3/yii2-app:latest
     ports:
       - "80:80"
     deploy:
