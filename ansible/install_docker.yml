@@ -1,22 +1,13 @@
 ---
-- name: Install Docker 
-  hosts: all
-  become: true
+- hosts: all
+  become: yes
   tasks:
     - name: Install Docker
       apt:
         name: docker.io
         state: present
-        update_cache: true
-
-    - name: Install Docker Compose
-      apt:
-        name: docker-compose
-        state: present
-    - name: Build Docker image from Dockerfile
-      docker_image:
-        build:
-          path: /yii2-app/Dockerfile
-        name: jayadeep3/yii2-app
-        tag: latest
-        state: present
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: true

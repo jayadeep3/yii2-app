@@ -1,9 +1,7 @@
 ---
-- name: Setup Docker Swarm
-  hosts: all
-  become: true
+- hosts: all
+  become: yes
   tasks:
     - name: Initialize Docker Swarm
       shell: docker swarm init
       ignore_errors: yes
-

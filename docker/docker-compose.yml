@@ -1,28 +1,26 @@
-version: "3.8"
+version: '3.8'
+
 services:
-  yii2-app:
-    build: /yii2-app .
-    image: jayadeep3/yii2-app:latest
+  web:
+    image: yourdockerhub/yii2-app:latest
+    ports:
+      - "80:80"
     deploy:
       replicas: 1
-      restart_policy:
-        condition: on-failure
-    ports:
-      - "8080:80"
-    networks:
-      - app-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
-      interval: 30s
-      retries: 3
-  node-exporter:
-    image: prom/node-exporter
-    ports:
-      - "9100:9100"
-    deploy:
-      mode: global
-    networks:
-      - app-network
-networks:
-  app-network:
-    driver: overlay
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: yii2app
+      DB_USERNAME: root
+      DB_PASSWORD: secret
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: yii2app
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
