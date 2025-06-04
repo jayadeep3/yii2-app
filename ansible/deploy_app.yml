@@ -2,5 +2,16 @@
 - hosts: all
   become: yes
   tasks:
+    - name: Ensure /yii2-app/docker directory exists
+      file:
+        path: /yii2-app/docker
+        state: directory
+        mode: '0755'
+
+    - name: Upload docker-compose.yml
+      copy:
+        src: ./docker/docker-compose.yml
+        dest: /yii2-app/docker/docker-compose.yml
+
     - name: Deploy Yii2 app stack
       shell: docker stack deploy -d -c /yii2-app/docker/docker-compose.yml yii2_app
