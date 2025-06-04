@@ -37,8 +37,8 @@
         name: docker
         enabled: yes
         state: started
-    - name: Install Docker Compose
-      get_url:
-        url: https://github.com/docker/compose/releases/download/v2.20.2/docker-compose-linux-x86_64
-        dest: /usr/local/bin/docker-compose
-        mode: '0755'
+    # - name: Install Docker Compose
+    #   get_url:
+    #     url: https://github.com/docker/compose/releases/download/v2.20.2/docker-compose-linux-x86_64
+    #     dest: /usr/local/bin/docker-compose
+    #     mode: '0755'
