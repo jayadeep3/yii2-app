@@ -10,7 +10,7 @@
 
     - name: Remove default nginx site
       file:
-        path: /etc/nginx/sites-enabled/default
+        path: /etc/nginx/sites-available/default
         state: absent
     
     - name: Copy custom nginx config
@@ -21,11 +21,11 @@
         group: root
         mode: 0644
     
-    - name: Enable yii2 site
-      file:
-        src: /etc/nginx/sites-available/yii2.conf
-        dest: /etc/nginx/sites-enabled/yii2.conf
-        state: link
+    # - name: Enable yii2 site
+    #   file:
+    #     src: /etc/nginx/sites-available/yii2.conf
+    #     dest: /etc/nginx/sites-enabled/yii2.conf
+    #     state: link
     
     - name: Restart nginx
       service:
