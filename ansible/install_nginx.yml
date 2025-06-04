@@ -6,11 +6,28 @@
       apt:
         name: nginx
         state: present
-    - name: Copy NGINX Config
+        update_cache: yes
+
+    - name: Remove default nginx site
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+    
+    - name: Copy custom nginx config
       copy:
         src: ../nginx/yii2.conf
+        dest: /etc/nginx/sites-available/yii2.conf
+        owner: root
+        group: root
+        mode: 0644
+    
+    - name: Enable yii2 site
+      file:
+        src: /etc/nginx/sites-available/yii2.conf
         dest: /etc/nginx/sites-enabled/yii2.conf
-    - name: Restart NGINX
+        state: link
+    
+    - name: Restart nginx
       service:
         name: nginx
         state: restarted
