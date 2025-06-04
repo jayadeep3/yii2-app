@@ -3,4 +3,4 @@
   become: yes
   tasks:
     - name: Deploy Yii2 app stack
-      shell: docker stack deploy -d -c ../docker/docker-compose.yml yii2_app
+      shell: docker stack deploy -d -c yii2-app/docker/docker-compose.yml yii2_app
