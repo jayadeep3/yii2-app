@@ -35,5 +35,4 @@
     - name: purge NGINX
       apt:
         name: nginx
-        state: absent
-        update_cache: yes
+        state: remove
