@@ -10,7 +10,7 @@
 
     - name: Upload docker-compose.yml
       copy:
-        src: ./docker/docker-compose.yml
+        src: ../docker/docker-compose.yml
         dest: /yii2-app/docker/docker-compose.yml
 
     - name: Deploy Yii2 app stack
