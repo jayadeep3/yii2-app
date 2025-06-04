@@ -32,8 +32,8 @@
         name: nginx
         state: restarted
 
-    - name: purge NGINX
-      apt:
-        name: nginx
-        state: absent
-        update_cache: yes
+    # - name: purge NGINX
+    #   apt:
+    #     name: nginx
+    #     state: absent
+    #     update_cache: yes
